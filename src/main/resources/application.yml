@@ -1,0 +1,50 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  servlet:
+    context-path: /web
+
+spring:
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+  resources:
+    add-mappings: false
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+##thymeleaf start
+#  spring.thymeleaf.mode=HTML5
+#  spring.thymeleaf.encoding=UTF-8
+#  spring.thymeleaf.content-type=text/html
+#  #开发时关闭缓存,不然没法看到实时页面
+#  spring.thymeleaf.cache=false
+
+# 配置swagger
+swagger:
+  basePackage: com.web.web.controller
+  title: API
+  description: 接口介绍
+  version: 1.0
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.web.web
+
